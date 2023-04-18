@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:55:02 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/18 01:50:32 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/18 21:12:25 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_vars
     int len;
     int w;
     int h;
+    int moves;
 }t_vars;
 
 # ifndef BUFFER_SIZE
@@ -60,7 +61,8 @@ void    check_c(char **map, int len_v);
 void    check_wall2(char **map, int len_v);
 void    check_wall(char **map, int len_v);
 void    graphics(char **map, int len);
-void    render_img(t_vars *v, char **map, int w);
+void    render_img(t_vars *v);
+int     keys(int key, t_vars *v);
 
 
 #endif
