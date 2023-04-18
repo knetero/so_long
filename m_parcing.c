@@ -6,13 +6,13 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 20:13:15 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/14 20:14:53 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/18 01:36:41 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    check_c2(vars v)
+void    check_c2(t_vars v)
 {
     if (v.e != 1)
         ft_puterror("Error: No exit or Muliple Exits on the map!\n");
@@ -24,7 +24,7 @@ void    check_c2(vars v)
 
 void    check_c(char **map, int len_v)
 {
-    vars v;
+    t_vars v;
     v.i = 0;
     v.j = 0;
     v.e = 0;
@@ -53,7 +53,7 @@ void    check_c(char **map, int len_v)
 
 void    check_wall2(char **map, int len_v)
 {
-    vars v;
+    t_vars v;
     v.j = 0;
     while (map[0][v.j] != '\n')
     {
@@ -72,12 +72,14 @@ void    check_wall2(char **map, int len_v)
 
 void    check_wall(char **map, int len_v)
 {
-   vars v;
+   t_vars v;
    int last_l;
     
     v.j = 0;
     v.x = 0;
     last_l = ft_strlen(map[len_v - 1]);
+    if (last_l + 1 >= 60)
+        ft_puterror("Error:Map tooo big\n");
     v.len = ft_strlen(map[v.x]) - 1;
     while (map[v.j] && v.j < len_v - 1)
     {

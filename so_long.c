@@ -6,15 +6,76 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:51:26 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/14 20:15:13 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/18 01:36:45 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// void    replace_chr(char **copy_map, int i, int j)
+// {
+//     if (copy_map[i + 1][j] == 'C' || copy_map[i + 1][j] == '0')
+//         copy_map[i + 1][j] = 'P';
+//     if (copy_map[i - 1][j] == 'C' || copy_map[i - 1][j] == '0')
+//         copy_map[i - 1][j] = 'P';
+
+//     if (copy_map[i][j +1] == 'C' || copy_map[i][j +1] == '0')
+//         copy_map[i][j + 1] = 'P';
+//     if (copy_map[i][j - 1] == 'C' || copy_map[i][j - 1] == '0')
+//         copy_map[i][j - 1] = 'P';
+// }
+
+// void    copy_player(char **copy_map)
+// {
+//     t_vars v;
+    
+//     v.i = 0;
+//     while(copy_map[v.i])
+//     {
+//         v.j = 0;
+//         while (copy_map[v.i][v.j])
+//         {
+//             if (copy_map[v.i][v.j] == 'P')
+//             {
+//                 printf("%d | %d -> %c\n", v.i, v.j, copy_map[v.i][v.j]);
+//                 replace_chr(copy_map , v.i, v.j);
+//             }
+//             v.j++;
+//         }
+//        v.i++;
+//     }
+//     v.i = 0;
+//     while (copy_map[v.i])
+//     {
+//         printf("%s", copy_map[v.i++]);
+//     }
+// }
+
+// char   **copy_map(char **map, int len)
+// {
+//     t_vars v;
+//     char **copy_map;
+
+
+//     v.i = 0;
+//     copy_map = malloc((sizeof(char *)) * len + 1);
+//     while(map[v.i])
+//     {
+//         copy_map[v.i] = ft_strdup(map[v.i]);
+//         v.i++;
+//     }
+//     copy_map[v.i] = NULL;
+//     // v.i = 0;
+//     // while (copy_map[v.i])
+//     // {
+//     //     printf("%s", copy_map[v.i++]);
+//     // }
+//     return (copy_map);
+// }
+
 int par_ac(int ac, char **av, int i)
 {
-    vars v;
+    t_vars v;
 
     v.fd = 0;
     if(ac == 2)
@@ -42,7 +103,7 @@ int par_ac(int ac, char **av, int i)
 
 int main(int argc , char **argv)
 {
-    vars v;
+    t_vars v;
 
     v.j = 0;
     v.i = 0;
@@ -62,9 +123,11 @@ int main(int argc , char **argv)
     close(v.fd);
     check_wall(v.map, v.i);
     check_c(v.map, v.i);
-    v.j = 0;
-    while (v.map[v.j])
-    {
-        printf("%s", v.map[v.j++]);
-    }
+    // copy_player(copy_map(v.map, v.i));
+    // v.j = 0;
+    // while (v.map[v.j])
+    // {
+    //     printf("%s", v.map[v.j++]);
+    // }
+    graphics(v.map, v.i);
 }
