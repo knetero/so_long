@@ -6,24 +6,26 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 20:13:15 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/18 06:59:50 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:40:21 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    check_c2(t_vars v)
+void    check_c2(t_vars *v)
 {
-    if (v.e != 1)
+    if (v->e != 1)
         ft_puterror("Error: No exit or Muliple Exits on the map!\n");
-    if (v.p != 1)
+    if (v->p != 1)
         ft_puterror("Error: No player or more than one on the map!\n");
-    if (v.c < 1)
+    if (v->c < 1)
         ft_puterror("Error: No collectibles on the map!\n");
 }
-void    check_c(char **map, int len_v)
+
+void    check_c(char **map)
 {
     t_vars v;
+
     v.i = 0;
     v.j = 0;
     v.e = 0;
@@ -47,7 +49,7 @@ void    check_c(char **map, int len_v)
         }
         v.i++;
     }
-    check_c2(v);
+    check_c2(&v);
 }
 
 void    check_wall2(char **map, int len_v)
@@ -72,13 +74,13 @@ void    check_wall2(char **map, int len_v)
 void    check_wall(char **map, int len_v)
 {
    t_vars v;
-   int last_l;
+   size_t last_l;
     
     v.j = 0;
     v.x = 0;
     last_l = ft_strlen(map[len_v - 1]);
-    if (last_l + 1 >= 60)
-        ft_puterror("Error:Map tooo big\n");
+    // if (last_l + 1 >= 60)
+    //     ft_puterror("Error:Map tooo big\n");
     v.len = ft_strlen(map[v.x]) - 1;
     while (map[v.j] && v.j < len_v - 1)
     {

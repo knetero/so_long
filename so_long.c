@@ -6,73 +6,23 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:51:26 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/18 05:20:03 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/29 07:30:16 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    replace_chr(char **copy_map, int i, int j)
+int par_ac2(int i, t_vars v)
 {
-    if (copy_map[i + 1][j] == 'C' || copy_map[i + 1][j] == '0')
-        copy_map[i + 1][j] = 'P';
-    if (copy_map[i - 1][j] == 'C' || copy_map[i - 1][j] == '0')
-        copy_map[i - 1][j] = 'P';
-
-    if (copy_map[i][j +1] == 'C' || copy_map[i][j +1] == '0')
-        copy_map[i][j + 1] = 'P';
-    if (copy_map[i][j - 1] == 'C' || copy_map[i][j - 1] == '0')
-        copy_map[i][j - 1] = 'P';
-}
-
-void    copy_player(char **copy_map)
-{
-    t_vars v;
-    
-    v.i = 0;
-    while(copy_map[v.i])
+    while(v.s != NULL)
     {
-        v.j = 0;
-        while (copy_map[v.i][v.j])
-        {
-            if (copy_map[v.i][v.j] == 'P')
-            {
-                printf("%d | %d -> %c\n", v.i, v.j, copy_map[v.i][v.j]);
-                replace_chr(copy_map , v.i, v.j);
-            }
-            v.j++;
-        }
-       v.i++;
+        free(v.s);
+        i++;
+        v.s = get_next_line(v.fd);
     }
-    v.i = 0;
-    while (copy_map[v.i])
-    {
-        printf("%s", copy_map[v.i++]);
-    }
+    free(v.s);
+    return (i);
 }
-
-char   **copy_map(char **map, int len)
-{
-    t_vars v;
-    char **copy_map;
-
-
-    v.i = 0;
-    copy_map = malloc((sizeof(char *)) * len + 1);
-    while(map[v.i])
-    {
-        copy_map[v.i] = ft_strdup(map[v.i]);
-        v.i++;
-    }
-    copy_map[v.i] = NULL;
-    // v.i = 0;
-    // while (copy_map[v.i])
-    // {
-    //     printf("%s", copy_map[v.i++]);
-    // }
-    return (copy_map);
-}
-
 int par_ac(int ac, char **av, int i)
 {
     t_vars v;
@@ -84,17 +34,14 @@ int par_ac(int ac, char **av, int i)
             return(write(1, "Error: in map extention !\n", 26), 1);
         v.fd = open(av[1], O_RDONLY);
         if(v.fd < 0)
-            return (0);
+        {
+            write(1, "Error: in open file \n", 20);
+            exit(1);
+        }
         v.s = get_next_line(v.fd);
         if(!v.s)
-            return (write(1, "Error: The map is empty !\n", 20), 1);
-        while(v.s != NULL)
-        {
-            free(v.s);
-            i++;
-            v.s = get_next_line(v.fd);
-        }
-        free(v.s);
+            return (write(1, "Error: The map is empty !\n", 27), 1);
+        i = par_ac2(i, v);
         return (close(v.fd), i);
     }
     else
@@ -122,12 +69,7 @@ int main(int argc , char **argv)
     }
     close(v.fd);
     check_wall(v.map, v.i);
-    check_c(v.map, v.i);
-    // copy_player(copy_map(v.map, v.i));
-    // v.j = 0;
-    // while (v.map[v.j])
-    // {
-    //     printf("%s", v.map[v.j++]);
-    // }
+    check_c(v.map);
+    copy_player(copy_map(v.map, v.i));
     graphics(v.map, v.i);
 }
