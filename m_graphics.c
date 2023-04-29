@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 00:56:53 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/28 19:13:04 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/29 14:49:45 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int ft_close(void)
 void    render_img(t_vars *v)
 {
     v->i = 0;
-     while(v->map[v->i])
+    while(v->map[v->i])
     {
         v->j = 0;
         while (v->map[v->i][v->j] != '\n')
@@ -78,8 +78,11 @@ void    graphics(char **map, int w)
     v.wall = mlx_xpm_file_to_image(v.mlx_ptr, "textures/wall.xpm", &v.w, &v.h);
     v.floor = mlx_xpm_file_to_image(v.mlx_ptr, "textures/floor.xpm", &v.w, &v.h);
     v.player = mlx_xpm_file_to_image(v.mlx_ptr, "textures/player.xpm", &v.w, &v.h);
+    v.left_player = mlx_xpm_file_to_image(v.mlx_ptr, "textures/left_player.xpm", &v.w, &v.h);
     v.coins = mlx_xpm_file_to_image(v.mlx_ptr, "textures/coins.xpm", &v.w, &v.h);
     v.exit = mlx_xpm_file_to_image(v.mlx_ptr, "textures/exit.xpm", &v.w, &v.h);
+    if(!v.exit || !v.wall || !v.floor || !v.player || !v.coins)
+        ft_puterror("Error: textures not found !\n");
     render_img(&v);
     mlx_hook(v.win_ptr, 2, 1L<<0, keys, &v);
     mlx_hook(v.win_ptr, 17, 1L<<0, ft_close, NULL);

@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 20:13:15 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/28 20:40:21 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/29 15:43:42 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void    check_wall(char **map, int len_v)
     v.j = 0;
     v.x = 0;
     last_l = ft_strlen(map[len_v - 1]);
-    // if (last_l + 1 >= 60)
-    //     ft_puterror("Error:Map tooo big\n");
+    if (last_l + 1 > 49)
+        ft_puterror("Error: Map too big\n");
     v.len = ft_strlen(map[v.x]) - 1;
     while (map[v.j] && v.j < len_v - 1)
     {

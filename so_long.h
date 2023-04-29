@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:55:02 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/28 19:17:00 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:27:12 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_vars
     char **map;
     char *s;
     void *player;
+    void *left_player;
     void *coins;
     void *exit;
     void *floor;

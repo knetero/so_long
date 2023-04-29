@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:51:26 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/29 07:30:16 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/29 15:43:13 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int main(int argc , char **argv)
     v.i = par_ac(argc, argv, v.i);
     if(v.i == 1)
         exit(1);
+    if(v.i > 29)
+        ft_puterror("Error: map is too big !\n");
     v.map = malloc(sizeof(char*) * (v.i + 1));
     if (!v.map)
         return (0);
