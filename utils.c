@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:30:01 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/19 02:00:52 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/04/30 14:26:33 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 int	check_ber(char *s)
 {
-	int i;
-	
+	int	i;
+
 	i = ft_strlen(s);
-	if (s[i - 4] == '.' && s[i - 3] == 'b' && s[i - 2] == 'e' && s[i - 1] == 'r')
-		return(1);
+	if (s[i - 4] == '.' && s[i - 3] == 'b'
+		&& s[i - 2] == 'e' && s[i - 1] == 'r')
+		return (1);
 	return (0);
 }
 
-void    ft_puterror(char *s)
+void	ft_puterror(char *s)
 {
-    ft_putstr_fd(s, 1);
-    exit(1);
+	ft_putstr_fd(s, 1);
+	exit(1);
 }
 
 void	ft_putstr_fd(char *s, int fd)
@@ -41,6 +42,7 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
