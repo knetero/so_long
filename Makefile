@@ -6,7 +6,7 @@
 #    By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/30 14:22:15 by abazerou          #+#    #+#              #
-#    Updated: 2023/04/30 18:49:02 by abazerou         ###   ########.fr        #
+#    Updated: 2023/05/01 12:12:37 by abazerou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ SRC = so_long.c get_next_line.c get_next_line_utils.c \
  	utils.c m_parcing.c m_graphics.c valid_path.c \
 	keys_helpers.c keys.c
 
+red			=	`tput setaf 1`
+green		=	`   tput setaf 2`
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
@@ -27,14 +30,17 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAG) $(OBJ) $(flg_mlx) -o $(NAME)
+	@echo " [$(green)SUCCESS$(white)] so_long $(green)is ready$(white)."
 
 %.o: %.c so_long.h
 	$(CC) $(FLAG)  -Imlx -c $<
 
 clean:
 	$(RM) $(OBJ)
+	@echo " [$(green)OBJ$(white)] so_long $(green)removed$(white)."
 
 fclean: clean
 	$(RM) $(NAME)
+	@echo " [$(green)OBJ & EXEC$(white)] so_long $(green)removed$(white)."
 
 re: fclean all

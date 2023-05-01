@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:31:19 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/30 17:15:55 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/01 13:40:11 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	is_mapvalid(char **copy_map)
 		v.i++;
 	}
 	if (v.e == 0)
-		ft_puterror("Error: exit surrounded with walls\n");
+		ft_puterror("Error: exit surrounded by walls !\n");
 }
 
 void	replace_chr(char **copy_map, int i, int j)

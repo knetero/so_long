@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 15:48:48 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/30 18:47:53 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:49:34 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	right_key_helper(t_vars *v, int i, int j)
 	{
 		if (v->c == 0)
 		{
-			ft_putstr_fd("Good job!\n", 1);
+			ft_putstr_fd("\033[0;32m=====> Gojo killed The Devil's Curses!\n", 1);
 			exit(0);
 		}
 		else
@@ -29,7 +29,7 @@ void	right_key_helper(t_vars *v, int i, int j)
 	v->map[i][j + 1] = 'P';
 	v->moves++;
 	ft_putnbr_fd(v->moves, 1);
-	ft_putstr_fd(" Moves\n", 1);
+	ft_putstr_fd(" \033[0;33m===> Moves\n", 1);
 	v->map[i][j] = '0';
 }
 
@@ -41,7 +41,7 @@ void	left_key_helper(t_vars *v, int i, int j)
 	{
 		if (v->c == 0)
 		{
-			ft_putstr_fd("Good job!\n", 1);
+			ft_putstr_fd("\033[0;32m=====> Gojo killed The Devil's Curses!\n", 1);
 			exit(0);
 		}
 		else
@@ -50,7 +50,7 @@ void	left_key_helper(t_vars *v, int i, int j)
 	v->map[i][j - 1] = 'P';
 	v->moves++;
 	ft_putnbr_fd(v->moves, 1);
-	ft_putstr_fd(" Moves\n", 1);
+	ft_putstr_fd(" \033[0;33m===> Moves\n", 1);
 	v->map[i][j] = '0';
 }
 
@@ -62,7 +62,7 @@ void	up_key_helper(t_vars *v, int i, int j)
 	{
 		if (v->c == 0)
 		{
-			ft_putstr_fd("Good job!\n", 1);
+			ft_putstr_fd("\033[0;32m=====> Gojo killed The Devil's Curses!\n", 1);
 			exit(0);
 		}
 		else
@@ -71,7 +71,7 @@ void	up_key_helper(t_vars *v, int i, int j)
 	v->map[i - 1][j] = 'P';
 	v->moves++;
 	ft_putnbr_fd(v->moves, 1);
-	ft_putstr_fd(" Moves\n", 1);
+	ft_putstr_fd(" \033[0;33m===> Moves\n", 1);
 	v->map[i][j] = '0';
 }
 
@@ -83,7 +83,7 @@ void	down_key_helper(t_vars *v, int i, int j)
 	{
 		if (v->c == 0)
 		{
-			ft_putstr_fd("Good job!\n", 1);
+			ft_putstr_fd("\033[0;32m=====> Gojo killed The Devil's Curses!\n", 1);
 			exit(0);
 		}
 		else
@@ -92,7 +92,7 @@ void	down_key_helper(t_vars *v, int i, int j)
 	v->map[i + 1][j] = 'P';
 	v->moves++;
 	ft_putnbr_fd(v->moves, 1);
-	ft_putstr_fd(" Moves\n", 1);
+	ft_putstr_fd(" \033[0;33m===> Moves\n", 1);
 	v->map[i][j] = '0';
 }
 
