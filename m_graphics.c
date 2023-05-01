@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 00:56:53 by abazerou          #+#    #+#             */
-/*   Updated: 2023/05/01 11:18:11 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:18:06 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,14 @@ void	render_img(t_vars *v)
 				mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_c,
 					60 * v->j, 60 * v->i);
 			else if (v->map[v->i][v->j] == 'E')
-				mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_e,
-					60 * v->j, 60 * v->i);
+			{
+				if (v->c)
+					mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_f,
+						60 * v->j, 60 * v->i);
+				else
+					mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_e,
+						60 * v->j, 60 * v->i);
+			}
 			v->j++;
 		}
 		v->i++;
@@ -65,7 +71,7 @@ void	count_c(t_vars *v)
 	}
 }
 
-void	graphics(char **map, int w)
+void	graphics(char **map, int y)
 {
 	t_vars	v;
 
@@ -77,10 +83,10 @@ void	graphics(char **map, int w)
 	v.h = 60;
 	v.moves = 0;
 	v.map = map;
+	v.x = ft_strlen(map[v.i]) - 1;
 	count_c(&v);
-	v.h = ft_strlen(map[v.i]) - 1;
 	v.mlx_ptr = mlx_init();
-	v.win_ptr = mlx_new_window(v.mlx_ptr, v.h * 60, w * 60, "so_long");
+	v.win_ptr = mlx_new_window(v.mlx_ptr, v.x * 60, y * 60, "so_long");
 	v.r_w = mlx_xpm_file_to_image(v.mlx_ptr, "textures/wall.xpm", &v.w, &v.h);
 	v.r_f = mlx_xpm_file_to_image(v.mlx_ptr, "textures/floor.xpm", &v.w, &v.h);
 	v.r_p = mlx_xpm_file_to_image(v.mlx_ptr, "textures/player.xpm", &v.w, &v.h);

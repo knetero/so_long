@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:55:02 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/30 20:20:00 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:52:26 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <sys/stat.h>
 # include "get_next_line.h"
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
 
 typedef struct s_vars
 {
@@ -79,5 +76,9 @@ int		check_ber(char *s);
 int		par_ac2(int i, t_vars v);
 int		keys(int key, t_vars *v);
 int		is_player_canpass(char **copy_map);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 #endif

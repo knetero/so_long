@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:51:26 by abazerou          #+#    #+#             */
-/*   Updated: 2023/05/01 13:38:38 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:13:45 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	par_ac(int ac, char **av, int i)
 	{
 		if (!(check_ber(av[1])))
 			return (write(1, "Error: in map extention !\n", 27), 1);
-		v.fd = open(av[1], O_RDONLY);
+		v.fd = open(av[1], O_RDWR);
 		if (v.fd < 0)
 		{
-			write(1, "Error: in open file !\n", 23);
+			write(1, "Error: in opening the file !\n", 30);
 			exit(1);
 		}
 		v.s = get_next_line(v.fd);
