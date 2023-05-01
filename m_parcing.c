@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 20:13:15 by abazerou          #+#    #+#             */
-/*   Updated: 2023/04/30 17:04:51 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/01 13:48:45 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	check_c3(t_vars *v)
 {
 	if (v->e != 1)
-		ft_puterror("Error: No exit or Muliple Exits on the map!\n");
+		ft_puterror("Error: No exit or Muliple Exits on the map !\n");
 	if (v->p != 1)
-		ft_puterror("Error: No player or more than one on the map!\n");
+		ft_puterror("Error: No player or more than one on the map !\n");
 	if (v->c < 1)
-		ft_puterror("Error: No collectibles on the map!\n");
+		ft_puterror("Error: No collectibles on the map !\n");
 }
 
 void	check_c2(char **map, t_vars *v)
@@ -28,7 +28,7 @@ void	check_c2(char **map, t_vars *v)
 				&& map[v->i][v->j] != 'P'
 				&& map[v->i][v->j] != 'E'
 				&& map[v->i][v->j] != 'C' && map[v->i][v->j] != '\n')
-		ft_puterror("Error: unkown char on the map!\n");
+		ft_puterror("Error: unkown char on the map !\n");
 	if (map[v->i][v->j] == 'E')
 		v->e++;
 	if (map[v->i][v->j] == 'P')
@@ -88,12 +88,12 @@ void	check_len_walls(char **map, int len_v)
 	v.x = 0;
 	last_l = ft_strlen(map[len_v - 1]);
 	if (last_l + 1 > 49)
-		ft_puterror("Error: Map too big\n");
+		ft_puterror("Error: Map too big !\n");
 	v.len = ft_strlen(map[v.x]) - 1;
 	while (map[v.j] && v.j < len_v - 1)
 	{
 		if (ft_strlen(map[v.j]) != last_l + 1)
-			ft_puterror("Error: in map lengh!\n");
+			ft_puterror("Error: in map lengh !\n");
 		v.j++;
 		if (map[v.x][0] != '1' || map[v.x][v.len - 1] != '1')
 			ft_puterror("Error: the map is not enclosed in walls !\n");
