@@ -6,11 +6,21 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 00:56:53 by abazerou          #+#    #+#             */
-/*   Updated: 2023/05/01 19:18:06 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:25:39 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	display_exit(t_vars *v)
+{
+	if (v->c)
+		mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_f,
+			60 * v->j, 60 * v->i);
+	else
+		mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_e,
+			60 * v->j, 60 * v->i);
+}
 
 int	ft_close(void)
 {
@@ -37,14 +47,7 @@ void	render_img(t_vars *v)
 				mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_c,
 					60 * v->j, 60 * v->i);
 			else if (v->map[v->i][v->j] == 'E')
-			{
-				if (v->c)
-					mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_f,
-						60 * v->j, 60 * v->i);
-				else
-					mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_e,
-						60 * v->j, 60 * v->i);
-			}
+				display_exit(v);
 			v->j++;
 		}
 		v->i++;

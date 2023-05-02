@@ -6,7 +6,7 @@
 #    By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/30 14:22:15 by abazerou          #+#    #+#              #
-#    Updated: 2023/05/01 12:12:37 by abazerou         ###   ########.fr        #
+#    Updated: 2023/05/02 12:12:52 by abazerou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ $(NAME): $(OBJ)
 
 clean:
 	$(RM) $(OBJ)
-	@echo " [$(green)OBJ$(white)] so_long $(green)removed$(white)."
 
 fclean: clean
 	$(RM) $(NAME)
