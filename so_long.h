@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:55:02 by abazerou          #+#    #+#             */
-/*   Updated: 2023/05/02 12:11:39 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:44:51 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ typedef struct s_vars
 }t_vars;
 
 char	**copy_map(char **map, int len);
-void	ft_puterror(char *s);
+void	ft_puterror(char *s, char **map);
+void	p_error(void);
 void	ft_putnbr_fd(int n, int fd);
 void	check_c2(char **map, t_vars *v);
-void	check_c3(t_vars *v);
+void	check_c3(t_vars *v, char **map);
 void	check_components(char **map);
 void	check_first_last_walls(char **map, int len_v);
 void	check_len_walls(char **map, int len_v);
 void	graphics(char **map, int len);
 void	render_img(t_vars *v);
-void	display_exit(t_vars *v);
 void	copy_player(char **copy_map);
 void	replace_chr(char **copy_map, int i, int j);
 void	is_mapvalid(char **copy_map);

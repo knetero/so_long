@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:31:19 by abazerou          #+#    #+#             */
-/*   Updated: 2023/05/01 13:40:11 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:45:45 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	is_mapvalid(char **copy_map)
 		while (copy_map[v.i][v.j])
 		{
 			if (copy_map[v.i][v.j] == 'C')
-				ft_puterror("Error: Map is not valid !\n");
+				ft_puterror("Error: Map is not valid !\n", copy_map);
 			if (copy_map[v.i][v.j] == 'E')
 			{
 				if (copy_map[v.i + 1][v.j] == 'P'
@@ -38,7 +38,7 @@ void	is_mapvalid(char **copy_map)
 		v.i++;
 	}
 	if (v.e == 0)
-		ft_puterror("Error: exit surrounded by walls !\n");
+		ft_puterror("Error: exit surrounded by walls !\n", copy_map);
 }
 
 void	replace_chr(char **copy_map, int i, int j)
@@ -109,7 +109,9 @@ char	**copy_map(char **map, int len)
 	char	**copy_map;
 
 	v.i = 0;
-	copy_map = malloc((sizeof(char *)) * len + 1);
+	copy_map = malloc((sizeof(char *)) * (len + 1));
+	if (!copy_map)
+		return (free(copy_map), NULL);
 	while (map[v.i])
 	{
 		copy_map[v.i] = ft_strdup(map[v.i]);

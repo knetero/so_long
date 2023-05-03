@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:30:01 by abazerou          #+#    #+#             */
-/*   Updated: 2023/05/01 21:02:46 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:25:15 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ int	check_ber(char *s)
 	return (0);
 }
 
-void	ft_puterror(char *s)
+void	ft_puterror(char *s, char **map)
 {
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
 	ft_putstr_fd(s, 1);
 	exit(1);
 }

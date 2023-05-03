@@ -6,11 +6,17 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:51:26 by abazerou          #+#    #+#             */
-/*   Updated: 2023/05/01 22:13:45 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:41:54 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	p_error(void)
+{
+	write(1, "Error: map is too big !\n", 25);
+	exit(1);
+}
 
 int	par_ac2(int i, t_vars v)
 {
@@ -59,17 +65,16 @@ int	main(int argc, char **argv)
 	if (v.i == 1)
 		exit(1);
 	if (v.i > 29)
-		ft_puterror("Error: map is too big !\n");
+		p_error();
 	v.map = malloc(sizeof(char *) * (v.i + 1));
 	if (!v.map)
-		return (0);
+		return (free(v.map), 0);
 	v.fd = open(argv[1], O_RDONLY);
 	if (v.fd < 0)
-		return (0);
-	while (v.j <= v.i)
-	{
+		return (free(v.map), 0);
+	while (v.j < v.i)
 		v.map[v.j++] = get_next_line(v.fd);
-	}
+	v.map[v.j] = NULL;
 	close(v.fd);
 	check_len_walls(v.map, v.i);
 	check_components(v.map);

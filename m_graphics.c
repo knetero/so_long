@@ -6,21 +6,11 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 00:56:53 by abazerou          #+#    #+#             */
-/*   Updated: 2023/05/02 11:25:39 by abazerou         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:22:28 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	display_exit(t_vars *v)
-{
-	if (v->c)
-		mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_f,
-			60 * v->j, 60 * v->i);
-	else
-		mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_e,
-			60 * v->j, 60 * v->i);
-}
 
 int	ft_close(void)
 {
@@ -33,7 +23,7 @@ void	render_img(t_vars *v)
 	while (v->map[v->i])
 	{
 		v->j = 0;
-		while (v->map[v->i][v->j] != '\n')
+		while (v->map[v->i][v->j] != '\n' && v->map[v->i][v->j] != '\0')
 		{
 			mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_f,
 				60 * v->j, 60 * v->i);
@@ -47,7 +37,8 @@ void	render_img(t_vars *v)
 				mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_c,
 					60 * v->j, 60 * v->i);
 			else if (v->map[v->i][v->j] == 'E')
-				display_exit(v);
+				mlx_put_image_to_window(v->mlx_ptr, v->win_ptr, v->r_e,
+					60 * v->j, 60 * v->i);
 			v->j++;
 		}
 		v->i++;
@@ -96,7 +87,7 @@ void	graphics(char **map, int y)
 	v.r_c = mlx_xpm_file_to_image(v.mlx_ptr, "textures/coins.xpm", &v.w, &v.h);
 	v.r_e = mlx_xpm_file_to_image(v.mlx_ptr, "textures/exit.xpm", &v.w, &v.h);
 	if (!v.r_e || !v.r_w || !v.r_f || !v.r_p || !v.r_c)
-		ft_puterror("Error: textures not found !\n");
+		ft_puterror("Error: textures not found !\n", map);
 	render_img(&v);
 	mlx_hook(v.win_ptr, 2, 0, keys, &v);
 	mlx_hook(v.win_ptr, 17, 0, ft_close, NULL);
