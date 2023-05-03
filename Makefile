@@ -6,12 +6,12 @@
 #    By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/30 14:22:15 by abazerou          #+#    #+#              #
-#    Updated: 2023/05/03 11:31:00 by abazerou         ###   ########.fr        #
+#    Updated: 2023/05/03 11:44:22 by abazerou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-FLAG = -Wall -Wextra -Werror -g3
+FLAG = -Wall -Wextra -Werror
 flg_mlx = -lmlx -framework OpenGL -framework AppKit 
 CC = cc 
 RM = rm -f 
