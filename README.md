@@ -1,12 +1,6 @@
 # So_long
 
-The purpose of this project is to build a small 2D video game using MiniLibX and learn a bit about how a simple video game usually works.
-
-# Jujitsu Kaisen 2D Game
-
-
-Welcome to the world of Jujitsu Kaisen! In this 2D game, you play as Gojo, the powerful sorcerer from the Jujitsu Kaisen anime. Your goal is to collect demons and assemble the powerful cursed object known as the finger.
-
+The purpose of this project is to build a small 2D video game using MiniLibX and learn a bit about how a simple video game usually works. I made my graphics to match the style of Jujitsu Kaisen anime, were you play as Gojo, the powerful sorcerer from the Jujitsu Kaisen anime. Your goal is to collect demons and assemble the powerful cursed object known as the finger.
 
 
 # How to play ?
