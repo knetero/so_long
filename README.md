@@ -1,11 +1,12 @@
 # So_long
 
 The purpose of this project is to build a small 2D video game using MiniLibX and learn a bit about how a simple video game usually works.
+
 # How to play ?
 
 You need to compile all source files with make all.
 
-To launch the game, execute ./so_long with a map as argument: ./so_long maps/map.ber
+To launch the game, execute `./so_long` with a map as argument: `./so_long maps/map.ber`
 
 Pay attention: minimize is not working!
 
